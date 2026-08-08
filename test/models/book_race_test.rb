@@ -3,10 +3,11 @@ require "test_helper"
 class BookRaceTest < ActiveSupport::TestCase
   self.use_transactional_tests = false
 
+  # Documents the bug that Book#check_out! guards against.
+  # Deliberately does NOT call check_out! — it inlines the unguarded
+  # read-then-write so the failure mode is visible.
+  # See book_concurrency_test.rb for the same scenario using the real method.
   test "naive check-then-write permits double checkout" do
-    # Documents why with_lock is necessary. Both threads read
-    # checked_out = false before either writes, so both succeed.
-    # See book_locking_test.rb for the same scenario with a lock.
     book = Book.create!(title: "Race", author: "Test")
     count = 0
     mutex = Mutex.new
@@ -26,6 +27,6 @@ class BookRaceTest < ActiveSupport::TestCase
     threads.each(&:join)
 
     book.destroy
-    assert_equal 2, count, "Naive read-then-write allows both checkouts to succeed"
+    assert_equal 2, count, "Both threads read false before either wrote"
   end
 end
