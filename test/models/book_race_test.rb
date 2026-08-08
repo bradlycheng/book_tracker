@@ -3,9 +3,11 @@ require "test_helper"
 class BookRaceTest < ActiveSupport::TestCase
   self.use_transactional_tests = false
 
-  test "two concurrent checkouts should only allow one" do
+  test "naive check-then-write permits double checkout" do
+    # Documents why with_lock is necessary. Both threads read
+    # checked_out = false before either writes, so both succeed.
+    # See book_locking_test.rb for the same scenario with a lock.
     book = Book.create!(title: "Race", author: "Test")
-    successes = Concurrent::AtomicFixnum.new(0) rescue nil
     count = 0
     mutex = Mutex.new
 
@@ -24,6 +26,6 @@ class BookRaceTest < ActiveSupport::TestCase
     threads.each(&:join)
 
     book.destroy
-    assert_equal 1, count, "Both checkouts succeeded — race condition"
+    assert_equal 2, count, "Naive read-then-write allows both checkouts to succeed"
   end
 end
