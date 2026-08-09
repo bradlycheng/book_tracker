@@ -77,7 +77,7 @@ task: TASK-007 (Mutations::CreateBook)
 result: PASS
 files_touched: app/graphql/types/mutation_type.rb,app/graphql/mutations/create_book.rb,test/integration/graphql_create_book_test.rb
 test_summary: 23 runs, 68 assertions, 0 failures, 0 errors, 0 skips
-commit_sha: (set below)
+commit_sha: b8d0bcf63232f53958a489822f3607972536c323
 error: |
   n/a
 ---
