@@ -43,10 +43,10 @@ acceptance: |
 notes:
 
 ## TASK-003
-status: pending
+status: in_progress
 title: Define Types::BookType
 depends_on: TASK-001
-attempts: 0
+attempts: 1
 max_attempts: 3
 description: |
   Create app/graphql/types/book_type.rb exposing id, title, author,
