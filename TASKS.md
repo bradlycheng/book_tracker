@@ -25,7 +25,7 @@ acceptance: |
 notes:
 
 ## TASK-002
-status: in_progress
+status: done
 title: Add presence validations to Book model
 depends_on: none
 attempts: 1

@@ -12,6 +12,9 @@
 #   end
 # end
 class Book < ApplicationRecord
+  validates :title, presence: true
+  validates :author, presence: true
+
   # Returns true if this call performed the checkout, false if the
   # book was already checked out. The lock closes the gap between
   # reading checked_out and writing it.

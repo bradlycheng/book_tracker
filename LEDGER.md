@@ -21,3 +21,13 @@ commit_sha: 2558b57d500cd13338b681661342bbff708087f4
 error: |
   n/a
 ---
+
+## 2026-08-09T02:10:47Z — TASK-002 attempt 1
+task: TASK-002 (Add presence validations to Book model)
+result: PASS
+files_touched: app/models/book.rb,test/models/book_test.rb
+test_summary: 13 runs, 26 assertions, 0 failures, 0 errors, 0 skips
+commit_sha: (set below)
+error: |
+  n/a
+---

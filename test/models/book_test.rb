@@ -49,3 +49,16 @@ class BookTest < ActiveSupport::TestCase
     assert_not book.check_in!
   end
 end
+class BookValidationTest < ActiveSupport::TestCase
+  test "invalid without a title" do
+    book = Book.new(author: "Author")
+    assert_not book.valid?
+    assert_includes book.errors[:title], "can't be blank"
+  end
+
+  test "invalid without an author" do
+    book = Book.new(title: "Title")
+    assert_not book.valid?
+    assert_includes book.errors[:author], "can't be blank"
+  end
+end
