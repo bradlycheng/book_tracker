@@ -81,3 +81,13 @@ commit_sha: b8d0bcf63232f53958a489822f3607972536c323
 error: |
   n/a
 ---
+
+## 2026-08-09T02:28:56Z — TASK-008 attempt 1
+task: TASK-008 (Mutations::UpdateBook)
+result: PASS
+files_touched: app/graphql/types/mutation_type.rb,app/graphql/mutations/update_book.rb,test/integration/graphql_update_book_test.rb
+test_summary: 25 runs, 75 assertions, 0 failures, 0 errors, 0 skips
+commit_sha: (set below)
+error: |
+  n/a
+---

@@ -126,7 +126,7 @@ acceptance: |
 notes:
 
 ## TASK-008
-status: in_progress
+status: done
 title: Mutations::UpdateBook
 depends_on: TASK-002, TASK-003
 attempts: 1
