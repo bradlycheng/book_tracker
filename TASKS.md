@@ -57,10 +57,10 @@ acceptance: |
 notes:
 
 ## TASK-004
-status: pending
+status: in_progress
 title: QueryType#books and #book(id:)
 depends_on: TASK-003
-attempts: 0
+attempts: 1
 max_attempts: 3
 description: |
   Add `books` (returns Book.order(:title)) and `book(id: ID!)`
