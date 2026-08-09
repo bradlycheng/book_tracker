@@ -93,10 +93,10 @@ acceptance: |
 notes:
 
 ## TASK-006
-status: pending
+status: in_progress
 title: Mutations::CheckInBook
 depends_on: TASK-003
-attempts: 0
+attempts: 1
 max_attempts: 3
 description: |
   Same shape as TASK-005 but for check_in!, mirroring the REST
