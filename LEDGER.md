@@ -97,7 +97,7 @@ task: TASK-009 (Malformed query error handling)
 result: PASS
 files_touched: test/integration/graphql_malformed_query_test.rb
 test_summary: 27 runs, 82 assertions, 0 failures, 0 errors, 0 skips
-commit_sha: (set below)
+commit_sha: d0e7b522a284a056c8b63074de1d93a27b9d84f0
 error: |
   n/a
 notes: |
