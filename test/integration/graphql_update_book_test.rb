@@ -41,4 +41,23 @@ class GraphqlUpdateBookTest < ActionDispatch::IntegrationTest
     assert_includes json["errors"], "Book not found"
     assert_nil json["book"]
   end
+  AUTHOR_MUTATION = <<~GQL
+    mutation($id: ID!, $author: String) {
+      updateBook(input: { id: $id, author: $author }) {
+        book { id title author }
+        success
+        errors
+      }
+    }
+  GQL
+
+  test "returns validation errors for a blank author" do
+    book = books(:one)
+
+    post "/graphql", params: { query: AUTHOR_MUTATION, variables: { id: book.id, author: "" } }, as: :json
+    json = JSON.parse(response.body)["data"]["updateBook"]
+
+    assert_not json["success"]
+    assert_includes json["errors"], "Author can't be blank"
+  end
 end

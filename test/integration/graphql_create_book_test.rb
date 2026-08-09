@@ -33,4 +33,14 @@ class GraphqlCreateBookTest < ActionDispatch::IntegrationTest
     assert_includes json["errors"], "Title can't be blank"
     assert_nil json["book"]
   end
+  test "returns validation errors for blank author" do
+    assert_no_difference "Book.count" do
+      post "/graphql", params: { query: MUTATION, variables: { title: "Some Title", author: "" } }, as: :json
+    end
+    json = JSON.parse(response.body)["data"]["createBook"]
+
+    assert_not json["success"]
+    assert_includes json["errors"], "Author can't be blank"
+    assert_nil json["book"]
+  end
 end

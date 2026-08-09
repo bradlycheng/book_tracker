@@ -149,3 +149,16 @@ notes: |
   one test per mutation covering this branch. Not part of the original
   TASKS.md backlog; a direct manual fix outside the loop.
 ---
+
+## 2026-08-09T02:51:55Z — manual follow-up (post-loop test review, part 2)
+task: none (manual, requested by user after loop completion)
+result: PASS
+files_touched: test/integration/graphql_create_book_test.rb,test/integration/graphql_update_book_test.rb
+test_summary: 32 runs, 103 assertions, 0 failures, 0 errors, 0 skips (up from 30)
+commit_sha: (set below)
+error: |
+  n/a
+notes: |
+  Closes the second flaw noted in review: blank-author was untested on
+  createBook/updateBook (only blank-title was). Symmetric coverage added.
+---
