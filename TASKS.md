@@ -25,10 +25,10 @@ acceptance: |
 notes:
 
 ## TASK-002
-status: pending
+status: in_progress
 title: Add presence validations to Book model
 depends_on: none
-attempts: 0
+attempts: 1
 max_attempts: 3
 description: |
   Add `validates :title, presence: true` and
