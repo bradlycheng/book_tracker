@@ -126,10 +126,10 @@ acceptance: |
 notes:
 
 ## TASK-008
-status: pending
+status: in_progress
 title: Mutations::UpdateBook
 depends_on: TASK-002, TASK-003
-attempts: 0
+attempts: 1
 max_attempts: 3
 description: |
   Add app/graphql/mutations/update_book.rb (id: ID!, title: String,
