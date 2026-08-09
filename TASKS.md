@@ -143,10 +143,10 @@ acceptance: |
 notes:
 
 ## TASK-009
-status: pending
+status: in_progress
 title: Malformed query error handling
 depends_on: TASK-004
-attempts: 0
+attempts: 1
 max_attempts: 3
 description: |
   Add a request test that POSTs a syntactically invalid GraphQL query
