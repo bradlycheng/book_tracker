@@ -37,7 +37,7 @@ task: TASK-003 (Define Types::BookType)
 result: PASS
 files_touched: app/graphql/types/book_type.rb,test/graphql/
 test_summary: 14 runs, 34 assertions, 0 failures, 0 errors, 0 skips
-commit_sha: (set below)
+commit_sha: 39bca9d3a1e77cbf434197206c9e80b71f408b45
 error: |
   n/a
 ---
