@@ -7,7 +7,9 @@ You are running **ONE iteration** of the autonomous orchestrator loop for the `b
 
 ## Environment quirks (discovered during the manual TASK-001 dry run — do not relearn these the hard way)
 
-The repo lives in WSL Ubuntu (`~/book_tracker`), not the Windows filesystem. This session's Bash tool has three real quirks when bridging to `wsl`:
+The repo lives in WSL Ubuntu (`~/book_tracker`), not the Windows filesystem, and not necessarily under this session's current working directory. **Never use the native Read/Write/Edit/Glob/Grep tools on this repo — they only see the Windows filesystem.** Every read of `.orchestrator/PROTOCOL.md`, `TASKS.md`, `LEDGER.md`, `.orchestrator/state.md`, and every file edit, must go through a `wsl` bash call (`cat`, `sed`, heredocs in a script file, etc.), same as every other repo interaction below.
+
+This session's Bash tool has three real quirks when bridging to `wsl`:
 
 1. **Bare `$VAR` references silently evaluate to empty** inside an inline `wsl -d Ubuntu -- bash -c '...'` string, even though `$(command substitution)` works fine. Root cause not fully diagnosed — treat as a hard rule: **never** put a variable assignment + later reference (`X=...; echo $X`) inline in a single `wsl ... bash -c '...'` call. Instead, write real multi-line scripts to a file and execute the file. Variables work fine *inside* a script file executed this way.
 2. **`/mnt/c/...` path arguments get mangled** by Git-Bash's automatic path conversion (turns into something like `C:/Program Files/Git/mnt/c/...`). Fix: prefix the outer command with `MSYS_NO_PATHCONV=1`.
