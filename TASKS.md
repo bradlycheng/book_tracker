@@ -93,7 +93,7 @@ acceptance: |
 notes:
 
 ## TASK-006
-status: in_progress
+status: done
 title: Mutations::CheckInBook
 depends_on: TASK-003
 attempts: 1

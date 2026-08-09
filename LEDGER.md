@@ -61,3 +61,13 @@ commit_sha: 69ef48901993eadb699494907d07f27ba5736a9a
 error: |
   n/a
 ---
+
+## 2026-08-09T02:22:52Z — TASK-006 attempt 1
+task: TASK-006 (Mutations::CheckInBook)
+result: PASS
+files_touched: app/graphql/types/mutation_type.rb,app/graphql/mutations/check_in_book.rb,test/integration/graphql_check_in_book_test.rb
+test_summary: 21 runs, 55 assertions, 0 failures, 0 errors, 0 skips
+commit_sha: (set below)
+error: |
+  n/a
+---
