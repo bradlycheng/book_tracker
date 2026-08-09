@@ -18,14 +18,16 @@ module Types
       ids.map { |id| context.schema.object_from_id(id, context) }
     end
 
-    # Add root-level fields here.
-    # They will be entry points for queries on your schema.
+    field :books, [Types::BookType], null: false, description: "All books, ordered by title."
+    def books
+      Book.order(:title)
+    end
 
-    # TODO: remove me
-    field :test_field, String, null: false,
-      description: "An example field added by the generator"
-    def test_field
-      "Hello World!"
+    field :book, Types::BookType, null: true, description: "A single book by id." do
+      argument :id, ID, required: true
+    end
+    def book(id:)
+      Book.find_by(id: id)
     end
   end
 end

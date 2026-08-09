@@ -57,7 +57,7 @@ acceptance: |
 notes:
 
 ## TASK-004
-status: in_progress
+status: done
 title: QueryType#books and #book(id:)
 depends_on: TASK-003
 attempts: 1

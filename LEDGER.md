@@ -41,3 +41,13 @@ commit_sha: 39bca9d3a1e77cbf434197206c9e80b71f408b45
 error: |
   n/a
 ---
+
+## 2026-08-09T02:16:57Z — TASK-004 attempt 1
+task: TASK-004 (QueryType#books and #book(id:))
+result: PASS
+files_touched: app/graphql/types/query_type.rb,test/integration/graphql_queries_test.rb
+test_summary: 17 runs, 37 assertions, 0 failures, 0 errors, 0 skips
+commit_sha: (set below)
+error: |
+  n/a
+---
