@@ -2,7 +2,7 @@
 protocol_version: 1
 
 ## TASK-001
-status: in_progress
+status: done
 title: Add graphql-ruby gem, run install generator, fix CSRF for JSON API
 depends_on: none
 attempts: 1
