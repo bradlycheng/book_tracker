@@ -43,7 +43,7 @@ acceptance: |
 notes:
 
 ## TASK-003
-status: in_progress
+status: done
 title: Define Types::BookType
 depends_on: TASK-001
 attempts: 1
