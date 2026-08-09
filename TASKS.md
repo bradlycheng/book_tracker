@@ -160,10 +160,10 @@ acceptance: |
 notes:
 
 ## TASK-010
-status: pending
+status: in_progress
 title: README documentation for GraphQL API
 depends_on: TASK-005, TASK-006, TASK-007, TASK-008
-attempts: 0
+attempts: 1
 max_attempts: 3
 description: |
   Update README.md with a "GraphQL API" section: the /graphql
