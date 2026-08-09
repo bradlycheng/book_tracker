@@ -132,3 +132,20 @@ notes: |
   run_status: stopped_backlog_complete - all TASKS.md entries are status:
   done. Nothing left to do; loop is not re-scheduling further wakeups.
 ---
+
+## 2026-08-09T02:50:22Z — manual follow-up (post-loop test review)
+task: none (manual, requested by user after loop completion)
+result: PASS
+files_touched: test/integration/graphql_check_out_book_test.rb,test/integration/graphql_check_in_book_test.rb,test/integration/graphql_update_book_test.rb
+test_summary: 30 runs, 94 assertions, 0 failures, 0 errors, 0 skips (up from 27)
+commit_sha: (set below)
+error: |
+  n/a
+notes: |
+  User asked to review the test suite for flaws post-run. Found that
+  CheckOutBook, CheckInBook, and UpdateBook all have a "Book not found"
+  error branch (unless book -> return early) with zero test coverage -
+  only the read-only book(id:) query tested the missing-id case. Added
+  one test per mutation covering this branch. Not part of the original
+  TASKS.md backlog; a direct manual fix outside the loop.
+---

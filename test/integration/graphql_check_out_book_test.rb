@@ -34,4 +34,12 @@ class GraphqlCheckOutBookTest < ActionDispatch::IntegrationTest
     assert_not json["success"]
     assert_includes json["errors"], "Already checked out"
   end
+  test "returns success: false with an error for a nonexistent book id" do
+    post "/graphql", params: { query: MUTATION, variables: { id: "999999" } }, as: :json
+    json = JSON.parse(response.body)["data"]["checkOutBook"]
+
+    assert_not json["success"]
+    assert_includes json["errors"], "Book not found"
+    assert_nil json["book"]
+  end
 end

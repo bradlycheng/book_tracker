@@ -33,4 +33,12 @@ class GraphqlUpdateBookTest < ActionDispatch::IntegrationTest
     assert_not json["success"]
     assert_includes json["errors"], "Title can't be blank"
   end
+  test "returns success: false with an error for a nonexistent book id" do
+    post "/graphql", params: { query: MUTATION, variables: { id: "999999", title: "Doesn't matter" } }, as: :json
+    json = JSON.parse(response.body)["data"]["updateBook"]
+
+    assert_not json["success"]
+    assert_includes json["errors"], "Book not found"
+    assert_nil json["book"]
+  end
 end
