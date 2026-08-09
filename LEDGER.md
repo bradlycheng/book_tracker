@@ -91,3 +91,18 @@ commit_sha: c643030ac9e58f43dbe582364c00faf57f957297
 error: |
   n/a
 ---
+
+## 2026-08-09T02:32:07Z — TASK-009 attempt 1
+task: TASK-009 (Malformed query error handling)
+result: PASS
+files_touched: test/integration/graphql_malformed_query_test.rb
+test_summary: 27 runs, 82 assertions, 0 failures, 0 errors, 0 skips
+commit_sha: (set below)
+error: |
+  n/a
+notes: |
+  graphql-ruby's default GraphqlController already returns a proper
+  {"errors":[...]} shape with HTTP 200 for malformed/invalid queries
+  (verified manually via curl before writing this test) - no code fix
+  was needed, only tests to lock in the existing correct behavior.
+---

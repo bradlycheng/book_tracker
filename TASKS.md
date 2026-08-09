@@ -143,7 +143,7 @@ acceptance: |
 notes:
 
 ## TASK-009
-status: in_progress
+status: done
 title: Malformed query error handling
 depends_on: TASK-004
 attempts: 1
