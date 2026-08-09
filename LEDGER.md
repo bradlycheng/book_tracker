@@ -67,7 +67,7 @@ task: TASK-006 (Mutations::CheckInBook)
 result: PASS
 files_touched: app/graphql/types/mutation_type.rb,app/graphql/mutations/check_in_book.rb,test/integration/graphql_check_in_book_test.rb
 test_summary: 21 runs, 55 assertions, 0 failures, 0 errors, 0 skips
-commit_sha: (set below)
+commit_sha: d0055f5a796a28e6fec7e7e4d219490e6ce748ef
 error: |
   n/a
 ---
