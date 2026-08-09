@@ -75,7 +75,7 @@ acceptance: |
 notes:
 
 ## TASK-005
-status: in_progress
+status: done
 title: Mutations::CheckOutBook
 depends_on: TASK-003
 attempts: 1
