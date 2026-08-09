@@ -2,10 +2,10 @@
 protocol_version: 1
 
 ## TASK-001
-status: pending
+status: in_progress
 title: Add graphql-ruby gem, run install generator, fix CSRF for JSON API
 depends_on: none
-attempts: 0
+attempts: 1
 max_attempts: 3
 description: |
   Run `bundle add graphql` and `bin/rails generate graphql:install`.
