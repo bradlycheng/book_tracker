@@ -106,3 +106,13 @@ notes: |
   (verified manually via curl before writing this test) - no code fix
   was needed, only tests to lock in the existing correct behavior.
 ---
+
+## 2026-08-09T02:34:58Z — TASK-010 attempt 1
+task: TASK-010 (README documentation for GraphQL API)
+result: PASS
+files_touched: README.md
+test_summary: 27 runs, 82 assertions, 0 failures, 0 errors, 0 skips
+commit_sha: (set below)
+error: |
+  n/a
+---

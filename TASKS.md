@@ -160,7 +160,7 @@ acceptance: |
 notes:
 
 ## TASK-010
-status: in_progress
+status: done
 title: README documentation for GraphQL API
 depends_on: TASK-005, TASK-006, TASK-007, TASK-008
 attempts: 1
