@@ -4,5 +4,6 @@ module Types
   class MutationType < Types::BaseObject
     field :check_out_book, mutation: Mutations::CheckOutBook
     field :check_in_book, mutation: Mutations::CheckInBook
+    field :create_book, mutation: Mutations::CreateBook
   end
 end

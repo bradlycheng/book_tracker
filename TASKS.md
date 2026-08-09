@@ -109,7 +109,7 @@ acceptance: |
 notes:
 
 ## TASK-007
-status: in_progress
+status: done
 title: Mutations::CreateBook
 depends_on: TASK-002, TASK-003
 attempts: 1
