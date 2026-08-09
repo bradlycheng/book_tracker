@@ -125,7 +125,7 @@ test_summary: |
   RUN SUMMARY: 10/10 tasks done, 0 blocked, 0 failed attempts, 0 interrupted
   attempts across the whole run. 10 iterations total. Final gate: 27 runs,
   82 assertions, 0 failures, 0 errors, 0 skips (up from an 11-test baseline).
-commit_sha: (set below)
+commit_sha: d23419141837eb80199c6f1bcaacfb92372c4409
 error: |
   n/a
 notes: |
