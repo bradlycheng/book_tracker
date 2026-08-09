@@ -75,10 +75,10 @@ acceptance: |
 notes:
 
 ## TASK-005
-status: pending
+status: in_progress
 title: Mutations::CheckOutBook
 depends_on: TASK-003
-attempts: 0
+attempts: 1
 max_attempts: 3
 description: |
   Add app/graphql/mutations/check_out_book.rb (id: ID! argument),
