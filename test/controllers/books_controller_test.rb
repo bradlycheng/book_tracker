@@ -15,14 +15,16 @@ class BooksControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "checking out an already checked out book does not succeed" do
-    book = Book.create!(title: "Test", author: "Author", checked_out: true)
+    book = Book.create!(title: "Test", author: "Author")
+    book.check_out!
     patch check_out_book_path(book)
     assert_redirected_to books_path
     assert_equal "Already checked out.", flash[:alert]
   end
 
   test "returning a checked out book makes it available" do
-    book = Book.create!(title: "Test", author: "Author", checked_out: true)
+    book = Book.create!(title: "Test", author: "Author")
+    book.check_out!
     patch check_in_book_path(book)
     assert_not book.reload.checked_out?
   end

@@ -20,4 +20,19 @@ class GraphqlQueriesTest < ActionDispatch::IntegrationTest
     json = JSON.parse(response.body)
     assert_nil json["data"]["book"]
   end
+  test "book query exposes checkout history, most recent first" do
+    book = books(:one)
+    book.check_out!
+    book.check_in!
+    book.check_out!
+
+    post "/graphql", params: { query: "{ book(id: \"#{book.id}\") { checkedOut checkouts { returnedAt } } }" }, as: :json
+    json = JSON.parse(response.body)["data"]["book"]
+    checkouts = json["checkouts"]
+
+    assert json["checkedOut"]
+    assert_equal 2, checkouts.length
+    assert_nil checkouts.first["returnedAt"], "most recent checkout is still open"
+    assert_not_nil checkouts.last["returnedAt"]
+  end
 end

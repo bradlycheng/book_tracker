@@ -162,3 +162,46 @@ notes: |
   Closes the second flaw noted in review: blank-author was untested on
   createBook/updateBook (only blank-title was). Symmetric coverage added.
 ---
+
+## 2026-08-13T15:35:39Z — manual workstream (new branch: checkout-model)
+task: none (manual, requested by user; not part of the closed TASKS.md backlog)
+result: PASS
+files_touched: db/migrate/20260813153115_create_checkouts.rb,db/migrate/20260813153116_backfill_checkouts_from_books.rb,db/migrate/20260813153117_remove_checked_out_and_due_date_from_books.rb,app/models/checkout.rb,app/models/book.rb,app/graphql/types/checkout_type.rb,app/graphql/types/book_type.rb,app/graphql/types/query_type.rb,app/controllers/books_controller.rb,test/fixtures/books.yml,test/models/checkout_test.rb,test/models/book_test.rb,test/models/book_race_test.rb,test/models/book_concurrency_test.rb,test/controllers/books_controller_test.rb,test/integration/graphql_check_out_book_test.rb,test/integration/graphql_check_in_book_test.rb,test/integration/graphql_queries_test.rb,test/graphql/types/checkout_type_test.rb
+test_summary: 40 runs, 128 assertions, 0 failures, 0 errors, 0 skips (up from 32 baseline)
+commit_sha: (set below)
+error: |
+  n/a
+notes: |
+  Branched off add-query-first (which had already added due_date and
+  books(first:) on top of the original graphql-api backlog, outside the
+  loop). Replaces the checked_out boolean column + with_lock pessimistic
+  locking on Book with a Checkout model: one row per checkout
+  (book_id, checked_out_at, due_date, returned_at), with a partial unique
+  index on checkouts(book_id) WHERE returned_at IS NULL. That index is the
+  actual fix - a concurrent second open checkout for the same book now
+  raises ActiveRecord::RecordNotUnique at the database layer instead of
+  relying on with_lock to serialize the check-then-write. Book#check_out!
+  and #check_in! no longer take any lock at all.
+
+  checked_out and due_date columns removed from books; both are now
+  derived from the book's open_checkout association. A migration backfills
+  any pre-existing checked_out: true rows into an open Checkout before the
+  columns are dropped. book.checkouts gives full loan history (most recent
+  first), exposed via GraphQL as Types::CheckoutType and a new 
+  field on BookType - REST view and existing checkedOut/dueDate call sites
+  are unchanged since Book still exposes those as methods.
+
+  book_race_test.rb was rewritten: it used to document the double-checkout
+  bug by inlining a naive check-then-write against the boolean column
+  (both threads succeeded). That bug can't be reproduced against the new
+  schema - even the same naive inlined pattern now hits the unique index
+  and only one thread's insert survives - so the test now asserts that
+  directly, in place of documenting a bug that no longer exists.
+
+  Verified manually end-to-end against a booted dev server: checkOutBook,
+  a second checkOutBook while open (fails cleanly via the RecordNotUnique
+  rescue, no 500), checkInBook, and the checkouts history field.
+  bin/rubocop run against changed files (pre-existing offenses only, all
+  in unmodified GraphQL array-literal style shared with unrelated code
+  paths - not introduced here). bin/brakeman: 0 warnings.
+---

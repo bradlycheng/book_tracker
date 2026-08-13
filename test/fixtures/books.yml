@@ -3,9 +3,7 @@
 one:
   title: MyString
   author: MyString
-  checked_out: false
 
 two:
   title: MyString
   author: MyString
-  checked_out: false

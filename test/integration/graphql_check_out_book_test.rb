@@ -26,7 +26,7 @@ class GraphqlCheckOutBookTest < ActionDispatch::IntegrationTest
 
   test "returns success: false for an already checked out book" do
     book = books(:one)
-    book.update!(checked_out: true)
+    book.check_out!
 
     post "/graphql", params: { query: MUTATION, variables: { id: book.id } }, as: :json
     json = JSON.parse(response.body)["data"]["checkOutBook"]

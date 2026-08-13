@@ -10,13 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_12_155904) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_13_153117) do
   create_table "books", force: :cascade do |t|
     t.string "author", null: false
-    t.boolean "checked_out", default: false, null: false
     t.datetime "created_at", null: false
-    t.date "due_date"
     t.string "title", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "checkouts", force: :cascade do |t|
+    t.integer "book_id", null: false
+    t.datetime "checked_out_at", null: false
+    t.datetime "created_at", null: false
+    t.date "due_date"
+    t.datetime "returned_at"
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_checkouts_on_book_id"
+    t.index ["book_id"], name: "index_checkouts_on_book_id_when_open", unique: true, where: "returned_at IS NULL"
+  end
+
+  add_foreign_key "checkouts", "books"
 end
