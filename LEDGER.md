@@ -168,7 +168,7 @@ task: none (manual, requested by user; not part of the closed TASKS.md backlog)
 result: PASS
 files_touched: db/migrate/20260813153115_create_checkouts.rb,db/migrate/20260813153116_backfill_checkouts_from_books.rb,db/migrate/20260813153117_remove_checked_out_and_due_date_from_books.rb,app/models/checkout.rb,app/models/book.rb,app/graphql/types/checkout_type.rb,app/graphql/types/book_type.rb,app/graphql/types/query_type.rb,app/controllers/books_controller.rb,test/fixtures/books.yml,test/models/checkout_test.rb,test/models/book_test.rb,test/models/book_race_test.rb,test/models/book_concurrency_test.rb,test/controllers/books_controller_test.rb,test/integration/graphql_check_out_book_test.rb,test/integration/graphql_check_in_book_test.rb,test/integration/graphql_queries_test.rb,test/graphql/types/checkout_type_test.rb
 test_summary: 40 runs, 128 assertions, 0 failures, 0 errors, 0 skips (up from 32 baseline)
-commit_sha: (set below)
+commit_sha: 651ac98389a17ec14799fd4d582f7ea29c6bce0a
 error: |
   n/a
 notes: |
