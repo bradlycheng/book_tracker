@@ -51,8 +51,8 @@
 # end
 
 class Book < ApplicationRecord
-  #validates :title, presence: true
-  #validates :author, presence: true
+  validates :title, presence: true
+  validates :author, presence: true
 
   def check_out!
     with_lock do
